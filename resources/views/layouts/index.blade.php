@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- <title>@yield('title', 'لوحة التحكم المتطورة')</title>  --}}
+
+
+
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap5/bootstrap.rtl.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('icons/font/bootstrap-icons.css') }}">
+
+
+    @livewireStyles
+</head>
+
+<body>
+
+    <!-- Topbar -->
+    <nav class="topbar">
+        <button class="btn btn-link text-dark d-lg-none" type="button" id="sidebarToggle">
+            <i class="bi bi-list fs-3"></i>
+        </button>
+    </nav>
+
+    <!-- Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Modern Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Sidebar Brand -->
+        <div class="sidebar-brand">
+            <div class="brand-content">
+                <div class="logo-icon">
+                    <i class="bi bi-columns-gap"></i>
+                </div>
+            </div>
+            <button class="sidebar-toggler d-none d-lg-block" type="button">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Sidebar Navigation -->
+        <div class="sidebar-nav">
+            <!-- Dashboard Section -->
+            <div class="nav-group">
+                <div class="nav-group-title">الرئيسية</div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="nav-icon"><i class="bi bi-speedometer2"></i></span>
+                            <span class="nav-text">لوحة التحكم</span>
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('student') }}">
+                            <span class="nav-icon"><i class="bi bi-person-lines-fill"></i></span>
+                            <span class="nav-text"> فێرخازی</span>
+                        </a>
+                    </li>
+
+
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ route('coach') }}">
+                            <span class="nav-icon"><i class="bi bi-person-workspace"></i></span>
+                            <span class="nav-text">راهێنەر</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link "  href="{{ route('nationality') }}">
+                            <span class="nav-icon"><i class="bi bi-card-text"></i></span>
+                            <span class="nav-text">  رەگەز نامە</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Management Section -->
+            <div class="nav-group">
+                <div class="nav-group-title">الإدارة</div>
+                <ul class="nav flex-column">
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ route('cart') }}">
+                            <span class="nav-icon"><i class="bi bi-printer"></i></span>
+                            <span class="nav-text">چاپکرنا موولەتان</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">
+                            <span class="nav-icon"><i class="bi bi-printer"></i></span>
+                            <span class="nav-text">طباعة القوائم</span>
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">
+                            <span class="nav-icon"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="nav-text">إرجاع الفواتير</span>
+                        </a>
+                    </li>
+
+                    <!-- Products Management -->
+                    <li class="nav-item">
+                        <a class="nav-link " data-bs-toggle="collapse" href="#productsMenu" role="button"
+                            aria-expanded="">
+                            <span class="nav-icon"><i class="bi bi-box-seam"></i></span>
+                            <span class="nav-text">إدارة المنتجات</span>
+                            <span class="nav-arrow"><i class="bi bi-chevron-left"></i></span>
+                        </a>
+                        <div class="collapse " id="productsMenu">
+                            <ul class="submenu">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#">
+                                        <span class="nav-text">المخزن</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#">
+                                        <span class="nav-text">إدارة الأنواع</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-text">تعريف المنتجات</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#">
+                                        <span class="nav-text">تغيير نوع العنصر</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <!-- Offers Management -->
+                    <li class="nav-item">
+                        <a class="nav-link " data-bs-toggle="collapse" href="#offersMenu" role="button"
+                            aria-expanded="">
+                            <span class="nav-icon"><i class="bi bi-gift"></i></span>
+                            <span class="nav-text">إدارة العروضات</span>
+                            <span class="nav-arrow"><i class="bi bi-chevron-left"></i></span>
+                        </a>
+                        <div class="collapse " id="offersMenu">
+                            <ul class="submenu">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#">
+                                        <span class="nav-text">إنشاء العروض</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#">
+                                        <span class="nav-text">تعديل العروض</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " data-bs-toggle="collapse" href="#driversMenu" role="button"
+                            aria-expanded="">
+                            <span class="nav-icon"><i class="bi bi-truck"></i></span>
+                            <span class="nav-text">إدارة السوائق</span>
+                            <span class="nav-arrow"><i class="bi bi-chevron-left"></i></span>
+                        </a>
+                        <div class="collapse " id="driversMenu">
+                            <ul class="submenu">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#">
+                                        <span class="nav-text">إضافة سائق</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">
+                            <span class="nav-icon"><i class="bi bi-wallet2"></i></span>
+                            <span class="nav-text">مصروفات</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">
+                            <span class="nav-icon"><i class="bi bi-buildings"></i></span>
+                            <span class="nav-text">إضافة شركة</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link " data-bs-toggle="collapse" href="#accountingMenu" role="button"
+                            aria-expanded="">
+                            <span class="nav-icon"><i class="bi bi-calculator"></i></span>
+                            <span class="nav-text">إدارة المحاسبة</span>
+                            <span class="nav-arrow"><i class="bi bi-chevron-left"></i></span>
+                        </a>
+
+                        <div class="collapse " id="accountingMenu">
+                            <ul class="submenu">
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+
+                                        <span class="nav-text">الحسابات</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="">
+
+                                        <span class="nav-text">جرد مخزن</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">
+
+                                        <span class="nav-text">دفع المستخدم</span>
+                                    </a>
+                                </li>
+
+                                {{-- <li class="nav-item">
+                                    <a class="nav-link {{ Route::is('accounting.index') ? 'active' : '' }}"
+                                        href="{{ route('accounting.index') }}">
+                                        <span class="nav-icon"><i class="bi bi-journal-text"></i></span>
+                                        <span class="nav-text">دفتر القيود</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Route::is('accounting.reports') ? 'active' : '' }}"
+                                        href="{{ route('accounting.reports') }}">
+                                        <span class="nav-icon"><i class="bi bi-graph-up"></i></span>
+                                        <span class="nav-text">التقارير المالية</span>
+                                    </a>
+                                </li> --}}
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    {{-- <li class="nav-item">
+                        <a class="nav-link {{ Route::is('accounting.create') ? 'active' : '' }}"
+                            href="{{ route('accounting.create') }}">
+                            <span class="nav-icon"><i class="bi bi-buildings"></i></span>
+                            <span class="nav-text">accounting</span>
+                        </a>
+                    </li> --}}
+
+                    <!-- Invoices Management -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#invoicesMenu" role="button"
+                            aria-expanded="">
+                            <span class="nav-icon"><i class="bi bi-currency-dollar"></i></span>
+                            <span class="nav-text">شراء القوائم</span>
+                            <span class="nav-arrow"><i class="bi bi-chevron-left"></i></span>
+                        </a>
+                        <div class="collapse" id="invoicesMenu">
+                            <ul class="submenu">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#">
+                                        <span class="nav-text">إضافة القوائم</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-text">عرض القوائم</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="nav-icon"><i class="bi bi-person-plus"></i></span>
+                            <span class="nav-text">إدارة المستخدمين</span>
+                        </a>
+                    </li>
+
+
+
+
+
+                </ul>
+            </div>
+
+            <!-- System Section -->
+            <div class="nav-group">
+                <div class="nav-group-title">النظام</div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#settingsMenu" role="button"
+                            aria-expanded="false">
+                            <span class="nav-icon"><i class="bi bi-gear"></i></span>
+                            <span class="nav-text">الإعدادات</span>
+                            <span class="nav-arrow"><i class="bi bi-chevron-left"></i></span>
+                        </a>
+                        <div class="collapse" id="settingsMenu">
+                            <ul class="submenu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-text">إعدادات الموقع</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="#" onclick="">
+                            <span class="nav-icon"><i class="bi bi-box-arrow-left"></i></span>
+                            <span class="nav-text">تسجيل الخروج</span>
+                        </a>
+                        {{-- <form id="logout-form" action="{{ route('logout') }}" style="display: none;">
+                            @csrf
+                        </form> --}}
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="bi bi-person"></i>
+                </div>
+                <div>
+                    <div class="user-name">ammar</div>
+                    <small class="text-muted">admin</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        @yield('content')
+
+        @livewireScripts
+    </main>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="{{ asset('assets/js/sweetalert2.all.js') }}"></script>
+
+
+
+
+
+
+</body>
+
+</html>
