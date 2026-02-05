@@ -39,6 +39,7 @@ return new class extends Migration
 
             $table->boolean('typecar'); 
             $table->boolean('learn');   
+            $table->boolean('status');   
 
             $table->date('data_start');
             $table->time('time');

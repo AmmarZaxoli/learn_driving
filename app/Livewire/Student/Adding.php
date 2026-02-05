@@ -110,7 +110,7 @@ class Adding extends Component
 
             notyf()->success('هاتە گوهــریــن');
         } else {
-            // CREATE
+            
             Student::create([
                 'name' => $this->name,
                 'mother_name' => $this->mother_name,
@@ -125,6 +125,7 @@ class Adding extends Component
                 'number_car' => $this->number_car,
                 'typecar' => $this->typecar,
                 'learn' => $this->learn,
+                'status' => false,
                 'data_start' => $this->data_start,
                 'time' => $this->time,
             ]);

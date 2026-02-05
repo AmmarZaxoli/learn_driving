@@ -424,10 +424,12 @@
                                     </button>
 
                                     <!-- Print -->
-                                    <button class="row-btn row-btn-print"
+                                    <button class="row-btn row-btn-outline-print" title="پرێنت"
                                         onclick="printStudent({{ $Student->id }})">
+
                                         <i class="bi bi-printer"></i>
                                     </button>
+
 
 
                                 </div>
@@ -557,7 +559,7 @@
                 url = '/students/print_mror/' + studentId;
             } else if (print3) {
                 url = '/students/print_time/' + studentId;
-            }else if (print4) {
+            } else if (print4) {
                 url = '/students/print_payment/' + studentId;
             }
 

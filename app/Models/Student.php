@@ -20,6 +20,7 @@ class Student extends Model
         'number_car',
         'typecar',
         'learn',
+        'status',
         'data_start',
         'time',
     ];
