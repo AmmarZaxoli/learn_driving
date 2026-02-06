@@ -9,10 +9,16 @@
     {{-- <title>@yield('title', 'لوحة التحكم المتطورة')</title>  --}}
 
 
+    <!-- Bootstrap 5 RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('assets/bootstrap5/bootstrap.rtl.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('icons/font/bootstrap-icons.css') }}">
 
 
     @livewireStyles
@@ -77,9 +83,9 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link "  href="{{ route('nationality') }}">
+                        <a class="nav-link " href="{{ route('nationality') }}">
                             <span class="nav-icon"><i class="bi bi-card-text"></i></span>
-                            <span class="nav-text">  رەگەز نامە</span>
+                            <span class="nav-text"> رەگەز نامە</span>
                         </a>
                     </li>
                 </ul>
@@ -365,11 +371,10 @@
         @livewireScripts
     </main>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
-    <script src="{{ asset('assets/js/sweetalert2.all.js') }}"></script>
 
 
 
