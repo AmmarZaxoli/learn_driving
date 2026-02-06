@@ -81,9 +81,7 @@ class Show extends Component
 
         );
 
-        notyf()
-            ->duration(3000)
-            ->dismissible(true)
+        flash()
             ->success(
                 $this->isEdit
                     ? 'هاتە گوهــریــن'
@@ -119,9 +117,7 @@ class Show extends Component
 
 
 
-            notyf()
-                ->duration(3000)
-                ->dismissible(true)
+            flash()
                 ->success('هاتە ژێـــبـرن');
         }
     }

@@ -1074,3 +1074,9 @@ select.modern-input {
         overflow-x: auto;
     }
 }
+
+
+.swal-rtl {
+    direction: rtl !important;
+    text-align: right;
+}

@@ -2,13 +2,16 @@
 
 namespace App\Livewire\Student;
 
-use App\Models\Coach;
-use App\Models\Nationality;
+use App\Models\coach;
+use App\Models\nationality;
 use App\Models\Student;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\Session;
 use Carbon\Carbon;
+
+use function Flasher\Prime\flash;
+
 class Adding extends Component
 {
     use WithPagination;
@@ -108,7 +111,7 @@ class Adding extends Component
                 'time' => $this->time,
             ]);
 
-            notyf()->success('هاتە گوهــریــن');
+            flash()->success('هاتە گوهــریــن');
         } else {
             
             Student::create([
@@ -130,7 +133,7 @@ class Adding extends Component
                 'time' => $this->time,
             ]);
 
-            notyf()->success('هاتە زێـدەکــرن');
+            flash()->success('هاتە زێـدەکــرن');
         }
 
         $this->resetForm();
@@ -191,8 +194,8 @@ class Adding extends Component
 
     public function mount()
     {
-        $this->coachs = Coach::all();
-        $this->nationalities = Nationality::all();
+        $this->coachs = coach::all();
+        $this->nationalities = nationality::all();
         $this->year = now()->year;
     }
 
@@ -208,10 +211,7 @@ class Adding extends Component
 
 
 
-            notyf()
-                ->duration(3000)
-                ->dismissible(true)
-                ->success('هاتە ژێـــبـرن');
+            flash()->success('هاتە ژێـــبـرن');
         }
     }
 

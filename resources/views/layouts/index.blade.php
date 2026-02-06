@@ -25,7 +25,7 @@
 </head>
 
 <body>
-
+    
     <!-- Topbar -->
     <nav class="topbar">
         <button class="btn btn-link text-dark d-lg-none" type="button" id="sidebarToggle">
@@ -380,7 +380,7 @@
 
 
 
-
+@flasher_render
 </body>
 
 </html>
