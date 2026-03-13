@@ -37,7 +37,7 @@ class Manage extends Component
     public function save()
     {
         $this->validate([
-            'name' => 'required|min:2|max:100|unique:Learntypes,name,' . $this->editId,
+            'name' => 'required|min:2|max:100|unique:learntypes,name,' . $this->editId,
         ]);
 
         $isEdit = $this->isEdit;
@@ -84,7 +84,7 @@ class Manage extends Component
     public function deleteLearntype($id)
     {
 
-        $learntype = Learntype::find($id);
+        $learntype = Learntype::findOrFail($id);
 
         if ($learntype) {
             $learntype->delete();
