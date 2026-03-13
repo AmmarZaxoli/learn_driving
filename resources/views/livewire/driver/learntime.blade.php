@@ -18,7 +18,8 @@
                 </div>
 
                 <div class="col-2">
-                    <button class="action-btn delete" wire:click="saveSelected" style="height: 43px; width: 60px;" title="نەئامادە">
+                    <button class="action-btn delete" wire:click="saveSelected" style="height: 43px; width: 60px;"
+                        title="نەئامادە">
                         <i class="bi bi-x-circle"></i>
                     </button>
                 </div>
@@ -41,13 +42,13 @@
                         <th class="text-center">کات</th>
                         <th class="text-center">کات</th>
                         <th class="text-center">روژێن ماین</th>
-                        <th class="text-center" width="150px">جورێ وانێ</th>
+                        <th class="text-center" style="width:150px">جورێ وانێ</th>
                         <th class="text-center">چالاکی</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($students as $index => $Student)
-                        <tr>
+                        <tr style="{{ $Student->todayAbsent ? 'background-color:#f8d7da;' : '' }}">
                             <td style="font-weight:600; color:var(--primary);">
                                 {{ $index + 1 }}
                             </td>
@@ -67,19 +68,19 @@
                                 {{ $Student->time ? \Carbon\Carbon::parse($Student->time)->format('h:i A') : '-' }}
                             </td>
                             <td class="text-center">
-                                {{ $Student->time2 ? \Carbon\Carbon::parse($Student->time)->format('h:i A') : '-' }}
+                                {{ $Student->time2 ? \Carbon\Carbon::parse($Student->time2)->format('h:i A') : '-' }}
                             </td>
                             <td class="text-center">
                                 {{ $Student->dayoflearn ?: '-' }}
                             </td>
                             <!-- Actions -->
-                            <td class="align-middle">
-                                <select class="form-control" wire:model.live="learn.{{ $Student->id }}">
-                                    <option value="">— هەڵبژێرە —</option>
-                                    @foreach ($learn as $value)
-                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                    @endforeach
-                                </select>
+                            <td class="text-center align-middle" style="width:150px">
+                               <select class="form-control" style="width:140px" wire:model="learn.{{ $Student->id }}">
+    <option value="">— هەڵبژێرە —</option>
+    @foreach ($learnTypes as $value)
+        <option value="{{ $value->id }}">{{ $value->name }}</option>
+    @endforeach
+</select>
                             </td>
                             <td class="align-middle">
                                 <button class="action-btn save" title="تومارکرن"

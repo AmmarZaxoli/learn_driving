@@ -336,8 +336,7 @@
                                 <div class="input-wrapper">
                                     <input type="time" id="time"
                                         class="form-control @error('time') is-invalid @enderror"
-                                        wire:model.live="time"
-                                        value="{{ old('time', isset($student) ? \Carbon\Carbon::parse($student->time)->format('H:i') : '') }}">
+                                        wire:model.live="time">
                                     <div class="input-line"></div>
                                 </div>
 
@@ -372,7 +371,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="form-label">روژێن فێرکرنێ</label>
-                                    <input type="text" class="form-control" wire:model="counter" readonly>
+                                    <input type="text" class="form-control" wire:model="dayoflearn" readonly>
                                     @if ($errorMessage)
                                         <div class="text-danger mt-1">{{ $errorMessage }}</div>
                                     @endif

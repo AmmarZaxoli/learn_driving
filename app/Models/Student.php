@@ -22,6 +22,7 @@ class Student extends Model
         'learn',
         'status',
         'data_start',
+        'data_learn',
         'time',
         'time2',
         'dayoflearn',
@@ -30,15 +31,19 @@ class Student extends Model
 
     public function nationality()
     {
-        return $this->belongsTo(nationality::class);
+        return $this->belongsTo(Nationality::class);
     }
 
     public function coach()
     {
-        return $this->belongsTo(coach::class);
+        return $this->belongsTo(Coach::class);
     }
-    public function infos()
+
+
+     public function todayAbsent()
     {
-        return $this->hasMany(StudentInfo::class);
+        return $this->hasOne(StudentInfo::class)
+            ->whereDate('date_day', now())
+            ->where('absent', true);
     }
 }

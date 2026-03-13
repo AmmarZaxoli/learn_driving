@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Student;
 
-use App\Models\coach;
-use App\Models\nationality;
+use App\Models\Coach;
+use App\Models\Nationality;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
@@ -63,7 +63,7 @@ class Adding extends Component
 
 
     #[Session]
-    public $counter;
+    public $dayoflearn;
 
 
     public function updatedTime()
@@ -96,23 +96,23 @@ class Adding extends Component
 
             // Check for same time (0 hour)
             if ($hours == 0) {
-                $this->counter = 0;
+                $this->dayoflearn = 0;
                 $this->errorMessage = 'نابت کات وەک ئێک بت';
             }
             // 1-hour session
             elseif ($hours == 1) {
-                $this->counter = 12;
+                $this->dayoflearn = 12;
             }
             // 2-hour session
             elseif ($hours == 2) {
-                $this->counter = 6;
+                $this->dayoflearn = 6;
             }
             // More than 2 hours
             elseif ($hours >= 3) {
-                $this->counter = 0;
+                $this->dayoflearn = 0;
                 $this->errorMessage = 'نابت ژ ٢ کات ژمێرا ببوریت';
             } else {
-                $this->counter = 0;
+                $this->dayoflearn = 0;
             }
         }
     }
@@ -154,7 +154,7 @@ class Adding extends Component
         // Fix for learn = 1
         if ($this->learn == 1) {
             $this->time2 = null;
-            $this->counter = 0;
+            $this->dayoflearn = 0;
         }
 
         if ($this->isEdit && $this->editId) {
@@ -174,9 +174,10 @@ class Adding extends Component
                 'typecar' => $this->typecar,
                 'learn' => $this->learn,
                 'data_start' => $this->data_start,
+                'data_learn' => $this->data_start,
                 'time' => $this->time,
                 'time2' => $this->time2,
-                'dayoflearn' => $this->counter,
+                'dayoflearn' => $this->dayoflearn,
             ]);
 
             flash()->success('هاتە گوهــریــن');
@@ -198,9 +199,10 @@ class Adding extends Component
                 'learn' => $this->learn,
                 'status' => false,
                 'data_start' => $this->data_start,
+                'data_learn' => $this->data_start,
                 'time' => $this->time,
-                'time2' => $this->time2, // will be null if learn=1
-                'dayoflearn' => $this->counter, // will be 0 if learn=1
+                'time2' => $this->time2,
+                'dayoflearn' => $this->dayoflearn,
             ]);
 
             flash()->success('هاتە زێـدەکــرن');
@@ -212,7 +214,7 @@ class Adding extends Component
     {
         if ($value == 1) {
             $this->time2 = null;
-            $this->counter = 0;
+            $this->dayoflearn = 0;
         }
     }
     public function resetForm()
@@ -237,7 +239,7 @@ class Adding extends Component
             'Studentadd',
             'time',
             'time2',
-            'counter',
+            'dayoflearn',
         ]);
     }
 
@@ -251,7 +253,7 @@ class Adding extends Component
         $this->isEdit = true;
         $this->Studentadd = true;
 
-        
+
 
         $this->fill([
             'name' => $student->name,
@@ -268,9 +270,11 @@ class Adding extends Component
             'typecar' => $student->typecar,
             'learn' => $student->learn,
             'data_start' => $student->data_start,
-            'time' => $student->time,
-            'time2' => $student->time2,
-            'dayoflearn' => $this->counter,
+
+            'time' => $student->time ? Carbon::parse($student->time)->format('H:i') : null,
+            'time2' => $student->time2 ? Carbon::parse($student->time2)->format('H:i') : null,
+
+            'dayoflearn' => $student->dayoflearn,
         ]);
     }
 
