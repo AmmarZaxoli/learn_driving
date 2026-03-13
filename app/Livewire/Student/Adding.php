@@ -281,8 +281,8 @@ class Adding extends Component
 
     public function mount()
     {
-        $this->coachs = coach::all();
-        $this->nationalities = nationality::all();
+        $this->coachs = Coach::all();
+        $this->nationalities = Nationality::all();
         $this->year = now()->year;
     }
 

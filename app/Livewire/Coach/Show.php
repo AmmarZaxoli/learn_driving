@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Coach;
 
-use App\Models\coach;
+use App\Models\Coach;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -111,7 +111,7 @@ class Show extends Component
     public function deleteCoach($id)
     {
 
-        $coach = Coach::find($id);
+        $coach = Coach::findOrFail($id);
 
         if ($coach) {
             $coach->delete();

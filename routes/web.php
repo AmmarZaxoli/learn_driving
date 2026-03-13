@@ -6,8 +6,12 @@ use App\Http\Controllers\PrintController;
 use App\Http\Controllers\Print_backPageController;
 use App\Livewire\Auth\Login;
 
+// Route::get('/', function () {
+//     return view('layouts.index');
+// });
+
 Route::get('/', function () {
-    return view('layouts.index');
+    return view('first.create');
 });
 
 Route::get('/login', Login::class)->name('login');
@@ -20,9 +24,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/driverlayout', function () {
         return view('layouts.indexdriver');
     })->name('indexdriver');
+
+    Route::view('/driver', 'driver.create')->name('driverlearntime');
 });
 
-Route::view('/driver', 'driver.create')->name('driverlearntime');
+
 ////////////
 
 Route::view('/dashboard', 'dashboard.create')->name('dashboard');
